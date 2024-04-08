@@ -1,0 +1,138 @@
+.grid-container {
+    padding: 0 29px;
+    grid-gap: 0.3rem;
+    display: grid;
+    gap: 1.3rem;
+    grid-template-areas:
+        "one two four"
+        "one two four-low";
+        grid-template-columns: 2fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+    height: 35rem;
+    margin-top: 1.3rem;
+    margin: 0 auto;
+    max-width: 180rem;
+    padding: 5rem;
+    padding-bottom: .5rem;
+    padding-top: 100px;
+    position: relative;
+    height: 90vh;
+
+}
+@media (max-width: 750px){
+.grid-container {
+    grid-gap: 13px;
+    padding: 0 29px;
+    display: grid;
+    gap: 13px;
+    grid-template-areas:
+        "one two"
+        "four four-low";
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: repeat(2,1fr);
+    margin: 0 auto;
+    max-width: 180rem;
+    padding: 5rem;
+    padding-bottom: .5rem;
+    
+}
+}
+.grid-item-1 {
+    grid-area: one;
+    position: relative;
+    
+}
+.grid-item-2 {
+    grid-area: two;
+    position: relative;
+}
+.grid-item-3{
+    grid-area: four;
+    position: relative;
+}
+.grid-item-4 {
+    grid-area:four-low;
+    position: relative;
+}
+.ds{
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+    width: 100%;
+}
+.container-2{
+    max-width: 1200px;
+    
+}
+.description{
+    bottom: 2rem;
+    color: #fff;
+    font-size: 3.8rem;
+    font-weight: 600;
+    top: 4rem;
+    position: absolute;
+
+}
+.lil-overlay {
+    background-color: rgba(0,0,0,.3);
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transition: all .3s ease-in;
+    width: 100%;
+}
+
+/* Hover animation */
+
+  .grid-item-1:hover img,
+  .grid-item-2:hover img,
+  .grid-item-3:hover img,
+  .grid-item-4:hover img {
+    filter:  brightness(0.4);
+  }
+  
+  
+  .Appear {
+    width: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color:#fff;
+  }
+  
+  .Appear h2,
+  .Appear p {
+    opacity: 0;
+    transition: 0.4s 0.2s ease;
+  }
+  .Appear h2 {
+    margin-bottom: 12px;
+    scale: 0.7;
+  }
+  .Appear p {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #d1d1d1;
+    transform: translateY(50%);
+  }
+  .grid-item-1:hover .Appear h2,
+  .grid-item-2:hover .Appear h2,
+  .grid-item-3:hover .Appear h2,
+  .grid-item-4:hover .Appear h2 {
+    scale: 1;
+    opacity: 1;
+  }
+  .grid-item-1:hover .Appear P,
+  .grid-item-3:hover .Appear P,
+  .grid-item-4:hover .Appear P,
+  .grid-item-2:hover .Appear P {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .container-2{
+    position: relative;
+    height: 100vh;
+  }
