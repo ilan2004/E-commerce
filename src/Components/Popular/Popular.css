@@ -24,3 +24,11 @@
     display:flex;
     gap: 30px;
 }
+@media (max-width: 768px){
+    .popular h1{
+        color: #171717;
+        font-size: 40px;
+        font-weight: 600;
+        text-align: center;
+    }
+}

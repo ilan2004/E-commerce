@@ -1,63 +1,83 @@
-import React, { useContext } from 'react'
-import starfull from '../../Assets/star_icon.png';
-import star from '../../Assets/star_dull_icon.png';
+import React, { useState, useContext } from 'react';
+import { useParams } from "react-router";
 import './ProductDisplay.css';
 import { ShopContext } from '../../Context/ShopContext';
-const ProductDisplay = (props) => {
-    const {product} = props;
-    const {addToCart} = useContext(ShopContext);
+import all_product from '../../Assets/all_product';
+const ProductDisplay = () => {
+  const { addToCart } = useContext(ShopContext);
+  const {productId} = useParams();
+  const { id, name, image, category, new_price, old_price, description } = all_product.find(product => product.id === Number(productId));
+
+  const [quantity, setQuantity] = useState(1);
+
+  const increase = () => {
+    if (quantity >= 1) {
+      setQuantity(quantity + 1);
+    }
+  };
+
+  const decrease = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  };
+
+  const [notify, setNotify] = useState(false);
+
+  const showNotify = () => {
+    setNotify(!notify);
+  };
+
   return (
-    <div className="productdisplay">
-        <div className="productdisplayleft">
-            <div className="productdisplay-img-list">
-                <img className='mini' src={product.image} alt="" />
-                <img className='mini' src={product.image} alt="" />
-                <img className='mini' src={product.image} alt="" />
-                <img className='mini' src={product.image} alt="" />  
+    <>
+      <div
+        onAnimationEnd={() => setNotify(false)}
+        className={`notify ${notify ? "slide-in" : ""}`}
+      >
+        <p>Item has been added to the cart &nbsp; ✅</p>
+      </div>
+
+      <div className="product-page-div">
+        <div className="container-2">
+          <div className="product-div">
+           
+            <div className="product-left">
+              <div className="big-img">
+                <img src={image} alt="product" />
+              </div>
+              <div className="small-imgs">
+              <img src={image} alt="product" />
+              </div>
             </div>
-            <div className='productdisplay-img'>
-            <img className="main-image" src={product.image} alt="" />
+            <div className="product-right">
+            <h3 className="product-big-name">{name}</h3>
+              <div className="product-quant">
+                <p>Quantity</p>
+                <div className="product-btns">
+                  <button onClick={decrease}>-</button>
+                  <p className="quantity">{quantity}</p>
+                  <button onClick={increase}>+</button>
+                </div>
+                <p className="product-price">${new_price}</p>
+              </div>
+              <div className="atc-buy">
+                <button
+                  onClick={() => {
+                    addToCart(id);
+                    showNotify();
+                  }}
+                  className="atc-btn"
+                >
+                  add to cart
+                </button>
+                <button className="buy-btn">buy now</button>
+              </div>
+            </div>
+          </div>
         </div>
-        </div>
-        <div className="productdisplayright">
-            <h1>{product.name}</h1>
-            <div className="productdisplay-right-star">
-                <img src={starfull} alt="" />
-                <img src={starfull} alt="" />
-                <img src={starfull} alt="" />
-                <img src={starfull} alt="" />
-                <img src={star} alt="" />
-                <p>(122)</p>
-            </div>
-            <div className='productdisplay-right-prices'>
-                <div className="productdisplay-right-price-old">
-                    ${product.old_price}
-                </div>
-                <div className="productdisplay-right-new">
-                ${product.new_price}
-                </div>
-            <div className="productdisplay-right-description">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus, neque et nihil a obcaecati, quae quia quos facere itaque veritatis natus cupiditate nisi odio tenetur aut dicta ipsa molestiae ut.
-                Inventore dolorum nemo unde, soluta quaerat consequatur quia ratione! Voluptates inventore consequuntur maiores quisquam et distinctio porro magni qui eius impedit perspiciatis rem atque a blanditiis pariatur, assumenda voluptate repellat.
-                Sunt inventore ad veritatis deserunt culpa quos blanditiis alias temporibus, cum, vero sint. Repudiandae illum itaque distinctio earum repellat corrupti consequuntur quisquam maiores est, corporis consequatur, rem, velit nam. Ipsa?
-            </div>
-            <div className="productdisplay-right-size">
-                <h1>Select Size</h1>
-                <div className="productdisplay-right-sizes">
-                    <div>S</div>
-                    <div>M</div>
-                    <div>L</div>
-                    <div>XL</div>
-                </div>
-            </div>
-            <button onClick={()=>{addToCart(product.id)}} className='add-to-cart'>ADD TO CART</button>
-            <p className='productdisplay-right-category'>
-                <span>Category :</span>New item </p>
-                <p className='productdisplay-right-category'>
-                <span>Tags :</span>Modern, latest</p>     
-            </div>
-            </div>
-    </div>
-  )
-}
+      </div>
+    </>
+  );
+};
+
 export default ProductDisplay;

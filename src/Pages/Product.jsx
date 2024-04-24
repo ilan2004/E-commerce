@@ -7,6 +7,7 @@ import Description from '../Components/Description/Description';
 // import all_product from '../Assets/all_product';
 // import Newsletter from '../Components/Newsletter/Newsletter';
 import Relatedproducts from '../Components/RelatedProducts/RelatedProducts';
+import ProductMap from '../Components/ProductDisplay/ProductMap';
  const Product = () => {
     const{all_product}= useContext(ShopContext);
     const {productId} = useParams();
@@ -14,7 +15,7 @@ import Relatedproducts from '../Components/RelatedProducts/RelatedProducts';
   return (
     <div>
         <Breadcrumses product={product}/>
-         <ProductDisplay product={product}/>
+         <ProductDisplay />
         <Description/>
         <Relatedproducts/> 
     </div>

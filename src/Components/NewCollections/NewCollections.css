@@ -28,9 +28,24 @@
 @media (max-width: 768px){
     .collections{
         display: flex;
-        flex-wrap: wrap;
+        flex-wrap: wrap ;
         align-items: center;
         justify-content: center;
         height: auto;
+        gap:0px;
+
+    }
+    .new-collections h1{
+        color: #171717;
+        font-size: 40px;
+        font-weight: 600;
+        text-align: center;
+    }
+    .new-collections{
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+    
     }
 }

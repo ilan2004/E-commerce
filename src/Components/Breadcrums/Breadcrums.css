@@ -9,3 +9,19 @@
     text-transform: capitalize;
     padding-top: 70px;;
 }
+@media (max-width:900px){
+    .breadcrum{
+        display: flex;
+        align-items: center;
+        text-align:left;
+        gap: 8px;
+        color: #5e5e5e;
+        font-size: 14px;
+        font-weight: 200;
+        margin-top:60px;
+        padding-bottom: 0px;
+        margin-left: 20px;
+        text-transform: capitalize;
+        padding-top: 20px;;
+    }
+}

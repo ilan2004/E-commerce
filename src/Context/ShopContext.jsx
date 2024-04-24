@@ -45,9 +45,16 @@ const ShopContextProvider = (props) => {
         return totalItem;
     }
     console.log(getTotalCartItems())
-    const RemovefromCart = (itemId) =>{
-        setCartItems((prev)=>({...prev,[itemId]:prev[itemId]-1}))
-    }
+    const RemovefromCart = (itemId) => {
+        setCartItems(prev => {
+            const updatedCart = { ...prev };
+            if (updatedCart[itemId] > 0) {
+                updatedCart[itemId] -= 1;
+            }
+            return updatedCart;
+        });
+    };
+    
     const contextValue ={getTotalCartItems,getTotalCartAmount,all_product,cartItems,addToCart,RemovefromCart};
     return (
         <ShopContext.Provider value= {contextValue}>
